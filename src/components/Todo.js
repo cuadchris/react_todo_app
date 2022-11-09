@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Todo(props) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState("");
+  const [newName, setNewName] = useState(props.name);
 
   const handleChange = (e) => {
     setNewName(e.target.value);
@@ -11,12 +11,10 @@ function Todo(props) {
   const handleSubmit = (e) => {
     if (newName.trim().length === 0) {
       e.preventDefault();
-      setNewName("");
       alert("Try again.");
     } else {
       e.preventDefault();
       props.editTask(props.id, newName);
-      setNewName("");
       setEditing(false);
     }
   };
@@ -29,7 +27,6 @@ function Todo(props) {
           className="todo-text"
           type="text"
           value={newName}
-          placeholder={props.name}
           onChange={handleChange}
         />{" "}
       </div>
@@ -37,7 +34,10 @@ function Todo(props) {
         <button
           type="button"
           className="btn todo-cancel"
-          onClick={() => setEditing(false)}
+          onClick={() => {
+            setEditing(false);
+            setNewName(props.name)
+          }}
         >
           Cancel
           <span className="visually-hidden">renaming {props.name}</span>
