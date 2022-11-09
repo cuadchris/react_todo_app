@@ -49,20 +49,10 @@ function App() {
     />
   ));
 
-  // const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
-  // const headingText = `${taskList.length} ${tasksNoun} remaining`;
-
   return (
     <div className="todoapp stack-large">
       <h1 style={{color: 'white'}}>Todo App</h1>
       <TodoForm addTask={addTask} />
-      {/* <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
-      </div> */}
-      {/* {taskList.length > 0 ? <h2 id="list-heading" >{headingText}</h2> : ""} */}
-      {/* <h2 id="list-heading" >{headingText}</h2> */}
       <ul
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
